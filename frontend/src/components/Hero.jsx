@@ -13,14 +13,6 @@ const Hero = () => {
             Our platform is designed to provide you with a seamless experience in managing your 
             account and accessing our services. Whether you're a new user or returning, we've got you covered.
           </p> <br></br><br></br>
-          <div className='d-flex'>
-            <Button variant='primary' href='/login' className='me-3'>
-              Sign In 
-            </Button>
-            <Button variant='secondary' href='/register'>
-              Register
-            </Button>
-          </div>
         </Card>
       </Container>
     </div>
