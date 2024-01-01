@@ -68,6 +68,6 @@ services:
             - STAGING= false #optional 
             - EMAIL=mhmd.husseinyy@gmail.com
 
-        # volumes are defined here
+        # volumes are defined herej
 volumes: 
     db-volume:
