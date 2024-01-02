@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
     networks:
       my-network:
-        ipv4_address: 172.16.238.10  # Assign a specific IPv4 address
+        ipv4_address: 137.184.10.142  # Assign the specific IPv4 address to backend
     ports:
       - "5000:5000"
     restart: always
@@ -18,7 +18,7 @@ services:
       dockerfile: Dockerfile
     networks:
       my-network:
-        ipv4_address: 172.16.238.11  # Assign a specific IPv4 address
+        ipv4_address: 137.184.10.142  # Assign the same specific IPv4 address to frontend
     ports:
       - "3000:3000"
     restart: always
@@ -34,11 +34,11 @@ services:
       - frontend
     networks:
       my-network:
-        ipv4_address: 172.16.238.12  # Assign a specific IPv4 address
+        ipv4_address: 137.184.10.142  # Assign the same specific IPv4 address to nginx
 
 networks:
   my-network:
+    driver: bridge
     ipam:
-      driver: default
       config:
-        - subnet: 172.16.238.0/24
+        - subnet: 137.184.10.0/24  # Define the subnet to allocate IPs from
