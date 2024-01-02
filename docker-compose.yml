@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
     networks:
       my-network:
-        ipv4_address: 137.184.10.142  # Assign the specific IPv4 address to backend
+        ipv4_address: 137.184.10.2  # Unique IPv4 address for backend
     ports:
       - "5000:5000"
     restart: always
@@ -18,7 +18,7 @@ services:
       dockerfile: Dockerfile
     networks:
       my-network:
-        ipv4_address: 137.184.10.142  # Assign the same specific IPv4 address to frontend
+        ipv4_address: 137.184.10.3  # Unique IPv4 address for frontend
     ports:
       - "3000:3000"
     restart: always
@@ -34,7 +34,7 @@ services:
       - frontend
     networks:
       my-network:
-        ipv4_address: 137.184.10.142  # Assign the same specific IPv4 address to nginx
+        ipv4_address: 137.184.10.4  # Unique IPv4 address for nginx
 
 networks:
   my-network:
