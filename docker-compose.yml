@@ -1,15 +1,6 @@
-version: '3'
+version: '3.9'
 
 services: 
-  mongoDb:
-    image: mongo
-    restart: always
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=root
-      - MONGO_INITDB_ROOT_PASSWORD=example
-    volumes: 
-      - db-volume:/data/db  
-
   backend:
     build:
       context: ./backend
@@ -42,8 +33,11 @@ services:
       - 8080:80
       - 443:443
     volumes:
-      - ./nginx/config:/config
-      - ./nginx/default.conf:/config/nginx/site-confs/default.conf
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/certbot:/etc/letsencrypt
+    depends_on:
+      - frontend
+      - backend
     container_name: nginx_mern
     restart: unless-stopped
     environment:
