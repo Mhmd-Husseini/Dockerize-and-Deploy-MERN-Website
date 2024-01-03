@@ -50,7 +50,7 @@ services:
     nginx:
         image: linuxserver/swag
         ports:
-            - 8080:80
+            - 80:80
             - 443:443
         volumes:
             - ./nginx/config:/config
