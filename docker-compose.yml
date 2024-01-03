@@ -47,26 +47,26 @@ services:
             - REACT_APP_BACKEND_URL=/api
             - CHOKIDAR_USEPOLLING=true
     
-nginx:
-    image: linuxserver/swag
-    ports:
-        - 8080:80
-    volumes:
-        - ./nginx/config:/config
-        - ./nginx/default.conf:/config/nginx/site-confs/default.conf
-    container_name: nginx
-    restart: unless-stopped
-    environment:
-        - PUID=1000
-        - PGID=1000
-        - TZ=Europe/London
-        - URL=husseini.hopto.org
-        - SUBDOMAINS=www,
-        - VALIDATION=http
-        - STAGING=false
-        - EMAIL=mhmd.husseinyy@gmail.com
+    nginx:
+        image: linuxserver/swag
+        ports:
+            - 8080:80
+        volumes:
+            - ./nginx/config:/config
+            - ./nginx/default.conf:/config/nginx/site-confs/default.conf
+        container_name: nginx
+        restart: unless-stopped
+        environment:
+            - PUID=1000
+            - PGID=1000
+            - TZ=Europe/London
+            - URL=husseini.hopto.org
+            - SUBDOMAINS=www,
+            - VALIDATION=http
+            - STAGING=false
+            - EMAIL=mhmd.husseinyy@gmail.com
 
 
-        # volumes are defined here
-volumes: 
-    db-volume:
+            # volumes are defined here
+    volumes: 
+        db-volume:
