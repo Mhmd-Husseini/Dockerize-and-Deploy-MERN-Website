@@ -40,10 +40,11 @@ services:
     image: linuxserver/swag
     ports:
       - 8080:80
+      - 443:443
     volumes:
       - ./nginx/config:/config
       - ./nginx/default.conf:/config/nginx/site-confs/default.conf
-    container_name: nginx
+    container_name: nginx_mern
     restart: unless-stopped
     environment:
       - PUID=1000
