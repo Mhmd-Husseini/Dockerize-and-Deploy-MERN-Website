@@ -42,11 +42,11 @@ services:
     environment:
         - PUID=1000
         - PGID=1000
-        - URL=your_domain.com
+        - URL=husseini.hopto.org
         - SUBDOMAINS=www,
         - VALIDATION=http
         - STAGING=false
-        - EMAIL=your_email@example.com
+        - EMAIL=mhmd.husseinyy@gmail.com
 
 networks:
   mern-network:
