@@ -1,4 +1,5 @@
 # Dockerize and Deploy MERN Stack Application
+http://husseini.hopto.org/
 
 This repository contains the code for a full-stack MERN (MongoDB, Express.js, React.js, Node.js) application that has been Dockerized for easy deployment. The application consists of a frontend, a backend, and an Nginx server acting as a reverse proxy and handling SSL certification.
 
@@ -90,3 +91,5 @@ A domain name (e.g., husseini.hopto.org)
 5. To run production, use `docker-compose -f docker-compose-prod.yml up`
 
 6. Access your deployed application at https://your_domain.com (e.g., husseini.hopto.org).
+
+http://husseini.hopto.org/
