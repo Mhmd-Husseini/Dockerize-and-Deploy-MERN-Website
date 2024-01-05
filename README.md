@@ -1,4 +1,4 @@
-# Dockerized MERN Stack Application
+# Dockerize and Deploy MERN Stack Application
 
 This repository contains the code for a full-stack MERN (MongoDB, Express.js, React.js, Node.js) application that has been Dockerized for easy deployment. The application consists of a frontend, a backend, and an Nginx server acting as a reverse proxy and handling SSL certification.
 
