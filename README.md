@@ -32,11 +32,11 @@ This repository contains the code for a full-stack MERN (MongoDB, Express.js, Re
    git clone https://github.com/Mhmd-Husseini/Dockerizing-MERN-app.git
    cd Dockerizing-MERN-app
    
-3. Install dependencies:
+2. Install dependencies:
    
    Navigate to the root directory and install dependencies: npm install.
    
-2. Set up MongoDB Atlas:
+3. Set up MongoDB Atlas (ignore it since i push the env file):
 
    Replace the MONGODB_URI in the backend .env (refer to .env-example) file with your Atlas connection string.
   
@@ -45,11 +45,11 @@ This repository contains the code for a full-stack MERN (MongoDB, Express.js, Re
    Start frontend: Specify command for launching frontend development server.
 
    Start backend: Provide command for starting backend server.
-
-   note: You can also start it by building and running docker containers.
   
-6. Access the frontend at http://localhost:3000.
-   
+5. Access the frontend at http://localhost:3000.
+
+You can also start it by building and running docker containers just by step1 and then running "docker-compose up --build" at the root directory. Finally you can access the app at http://localhost  
+
 
 ### Deployment on DigitalOcean
 
