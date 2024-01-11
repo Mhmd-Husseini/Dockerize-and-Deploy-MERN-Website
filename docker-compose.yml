@@ -1,54 +1,13 @@
-version: '3.9'
+version: '3.8'
 
 services:
-  backend:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
-    container_name: node-api
+  frontend:
+    build: ./services/client
+    ports:
+      - "80:80"
+    depends_on:
+      - node-api 
+  node-api:
+    build: ./services/node
     ports:
       - "5000:5000"
-    restart: always
-    networks:
-      - mern-network
-
-  frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    container_name: react-ui
-    ports:
-      - "3000:3000"  # Nginx listens on port 80 by default
-    depends_on:
-      - backend
-    environment:
-      - REACT_APP_BACKEND_URL=/api
-    restart: always
-    networks:
-      - mern-network
-  nginx:
-    image: linuxserver/swag
-    ports:
-        - "443:443"  # Use port 443 for HTTPS
-        - "8080:8080"  # Optional for HTTP redirect to HTTPS
-    volumes:
-        - ./nginx/conf.d:/etc/nginx/conf.d
-        - ./nginx/certbot:/etc/letsencrypt
-    depends_on:
-        - frontend
-        - backend
-    container_name: nginx_mern
-    restart: unless-stopped
-    environment:
-        - PUID=1000
-        - PGID=1000
-        - URL=husseini.hopto.org
-        - SUBDOMAINS=www,
-        - VALIDATION=http
-        - STAGING=false
-        - EMAIL=mhmd.husseinyy@gmail.com
-
-networks:
-  mern-network:
-    driver: bridge
-
