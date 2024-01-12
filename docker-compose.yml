@@ -7,7 +7,22 @@ services:
       - "80:80"
     depends_on:
       - node-api 
+
   node-api:
     build: ./services/node
     ports:
       - "5000:5000"
+    depends_on:
+      - mongodb
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017/mern
+
+  mongodb:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+volumes:
+  mongodb_data:

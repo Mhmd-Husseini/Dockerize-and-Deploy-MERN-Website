@@ -1,3 +1,47 @@
+# version: '3.6'
+
+# services:
+
+#   node-prod:
+#     build:
+#       context: ./services/node
+#       dockerfile: Dockerfile-prod
+#     volumes:
+#       - './services/node:/usr/src/app'
+#       - '/usr/src/app/node_modules'
+# #    ports:
+# #      - 3001:3001
+#     environment:
+#       - NODE_ENV=production
+# #    depends_on:
+# #     - db-service
+
+#   client-prod:
+#     build:
+#       context: ./services/client
+#       dockerfile: Dockerfile-prod
+# #    volumes:
+# #      - './services/client/:/usr/src/app'
+# #      - '/usr/src/app/node_modules'
+# #    expose:
+# #      - 80
+#     environment:
+#       - NODE_ENV=production
+# #      - REACT_APP_API_URL=${REACT_APP_API_URL}
+#     depends_on:
+#       - node-prod
+
+#   nginx-prod:
+#     build:
+#       context: ./services/nginx
+#       dockerfile: Dockerfile-prod
+#     restart: always
+#     ports:
+#       - 80:80
+#     depends_on:
+#       - node-prod
+#       - client-prod
+
 version: '3.6'
 
 services:
@@ -6,30 +50,30 @@ services:
     build:
       context: ./services/node
       dockerfile: Dockerfile-prod
+    depends_on:
+      - mongodb
     volumes:
       - './services/node:/usr/src/app'
       - '/usr/src/app/node_modules'
-#    ports:
-#      - 3001:3001
     environment:
       - NODE_ENV=production
-#    depends_on:
-#     - db-service
+      - MONGO_URI=mongodb://mongodb:27017/mern
 
   client-prod:
     build:
       context: ./services/client
-      dockerfile: Dockerfile-prod
-#    volumes:
-#      - './services/client/:/usr/src/app'
-#      - '/usr/src/app/node_modules'
-#    expose:
-#      - 80
+      dockerfile: Dockerfile-pro
     environment:
       - NODE_ENV=production
-#      - REACT_APP_API_URL=${REACT_APP_API_URL}
     depends_on:
       - node-prod
+
+  mongodb-prod:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db   
 
   nginx-prod:
     build:
@@ -41,3 +85,7 @@ services:
     depends_on:
       - node-prod
       - client-prod
+      - mongodb-prod
+
+volumes:
+  mongodb_data:   
