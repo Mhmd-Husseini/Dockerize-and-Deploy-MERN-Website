@@ -51,7 +51,7 @@ services:
       context: ./services/node
       dockerfile: Dockerfile-prod
     depends_on:
-      - mongodb-prod
+      - mongodb
     volumes:
       - './services/node:/usr/src/app'
       - '/usr/src/app/node_modules'
@@ -68,7 +68,7 @@ services:
     depends_on:
       - node-prod
 
-  mongodb-prod:
+  mongodb:
     image: mongo
     ports:
       - "27017:27017"
@@ -85,7 +85,7 @@ services:
     depends_on:
       - node-prod
       - client-prod
-      - mongodb-prod
+      - mongodb
 
 volumes:
   mongodb_data:   
